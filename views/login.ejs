@@ -3,7 +3,7 @@
 <head>
 	<title>IoT</title>
 	<link rel="stylesheet" type="text/css" href="css/dangnhap-dangky.css">
-	
+
 </head>
 <body>
 	<h2>Smart home</h2>
@@ -71,14 +71,14 @@
 			var username = document.getElementById('inp1').value;
 			var email = document.getElementById('inp2').value;
 			var password = document.getElementById('inp3').value;
-			var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+			var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
 			var theUrl = "/api/users/signup";
 			xmlhttp.onreadystatechange = function() {
-				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-					if(xmlhttp.status == 400){
+				if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+					if(xmlhttp.status === 400){
 						alert(xmlhttp.responseText);
 					}
-					if(xmlhttp.status == 200){
+					if(xmlhttp.status === 200){
 						window.location.href = "/"
 					}
 				}
@@ -88,20 +88,20 @@
 			username = document.getElementById('inp1').value;
 			email = document.getElementById('inp2').value;
 			password = document.getElementById('inp3').value;
-			xmlhttp.send(JSON.stringify({ username: username, password: password, email: email}));            
+			xmlhttp.send(JSON.stringify({ username: username, password: password, email: email}));
 		}
 		function validateLogin() {
 			var email = document.getElementById('inp4').value;
 			var password = document.getElementById('inp5').value;
-            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
             var theUrl = "/api/users/login";
             xmlhttp.onreadystatechange = function() {
 				console.log(xmlhttp.status);
-                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                    if(xmlhttp.status == 400 || xmlhttp.status == 404){
+                if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+                    if(xmlhttp.status === 400 || xmlhttp.status === 404){
                         alert(xmlhttp.responseText);
                     }
-					if(xmlhttp.status == 200){
+					if(xmlhttp.status === 200){
                         window.location.href = "/";
                     }
                 }
@@ -112,7 +112,7 @@
 			password = document.getElementById('inp5').value;
             xmlhttp.send(JSON.stringify({email : email, password : password}));
 		}
-		
+
 </script>
 
 

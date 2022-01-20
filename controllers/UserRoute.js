@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require('express')
 const md5 = require('md5')
-const router = express.Router();
+const router = express.Router()
 
 const User = require('../models/User')
 const auth = require('./middleware/auth')
@@ -31,7 +31,7 @@ router.post('/signup', async(req, res) => {
                 res.status(400).json({message: `Error: ${err.message}`});
             }
         }
-}) 
+})
 
 router.post('/login', async(req, res) => {
     //Login a registered user
@@ -48,10 +48,10 @@ router.post('/login', async(req, res) => {
             res.status(400).send({error: 'Wrong email/password'})
         }
         else{
-            var enpass = md5(password);
-            if(enpass == user.password){
+            const enpass = md5(password);
+            if(enpass === user.password){
                 const token = await user.generateAuthToken()
-                res.cookie('token', token, { expires: new Date(Date.now() + 900000), httpOnly: true });
+                res.cookie('token', token, { expires: new Date(Date.now() + 900000), httpOnly: true })
                 res.status(200).send([user, token])
             }
             else{
@@ -75,7 +75,7 @@ router.post('/me/logout', auth, async (req, res) => {
     // Log user out of the application
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
-            return token.token != req.token
+            return token.token !== req.token
         })
         await req.user.save()
         res.clearCookie('token').status(200).send();
@@ -95,4 +95,4 @@ router.post('/me/logoutall', auth, async(req, res) => {
     }
 })
 
-module.exports = router;
+module.exports = router

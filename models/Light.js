@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const lightSchema = new mongoose.Schema({
     id: {
         type: Number,
@@ -11,5 +11,5 @@ const lightSchema = new mongoose.Schema({
     }
 }, {collection: 'light'})
 
-const lightSchemaModel = mongoose.model('light', lightSchema);
-module.exports = lightSchemaModel;
+const lightSchemaModel = mongoose.model('light', lightSchema)
+module.exports = lightSchemaModel

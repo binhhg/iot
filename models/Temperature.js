@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const temperatureSchema = new mongoose.Schema({
     values: [{
         _id: false,
@@ -13,7 +13,7 @@ const temperatureSchema = new mongoose.Schema({
             type: Number,
             required: true
         }
-        
+
     }]
 },{timestamps: true},{collection: 'temperature'}
 )
@@ -23,8 +23,8 @@ temperatureSchema.methods.generateValueandTime = async function(value, time) {
     const temp = this
     // console.log(temp.values.length);
     if(temp.values.length >= 100){
-        temp.values = [];
-        temp.times = [];
+        temp.values = []
+        temp.times = []
     }
     temp.values = temp.values.concat({value})
     temp.times = temp.times.concat({time})
@@ -33,4 +33,4 @@ temperatureSchema.methods.generateValueandTime = async function(value, time) {
 }
 
 const temperatureSchemaModel = mongoose.model('temperature', temperatureSchema);
-module.exports = temperatureSchemaModel;
+module.exports = temperatureSchemaModel

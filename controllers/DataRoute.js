@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const mqttHandler = require('./mqtt/mqtt_handler')
 const auth = require('./middleware/auth')
 const Light = require('../models/Light')
@@ -8,7 +8,7 @@ const Temperature = require('../models/Temperature')
 const User = require('../models/User')
 const mqttClient = require('../app')
 
-var mytopic = '/iot2021/pub'
+const mytopic = '/iot2021/pub'
 
 // var mqttClient = new mqttHandler();
 // mqttClient.connect();
@@ -16,8 +16,8 @@ var mytopic = '/iot2021/pub'
 router.post("/send-mqtt/led/1", auth,  function(req, res) {
     try{
        // console.log(req.body.status)
-        mqttClient.sendLed1((req.body.status));
-        res.status(201).send(req.body);
+        mqttClient.sendLed1((req.body.status))
+        res.status(201).send(req.body)
     }
     catch(err){
         res.status(400).send(err)
@@ -27,8 +27,8 @@ router.post("/send-mqtt/led/1", auth,  function(req, res) {
 router.post("/send-mqtt/led/2", auth, function(req, res) {
     try{
         //console.log(req.body.status)
-        mqttClient.sendLed2((req.body.status));
-        res.status(201).send(req.body);
+        mqttClient.sendLed2((req.body.status))
+        res.status(201).send(req.body)
     }
     catch(err){
         res.status(400).send(err)
@@ -96,4 +96,4 @@ router.get("/recv-mqtt/temperature", async(req, res) => {
     }
 })
 
-module.exports = router;
+module.exports = router

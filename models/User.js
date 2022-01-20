@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+const mongoose = require('mongoose')
+const validator = require('validator')
 const md5 = require('md5');
 const jwt = require('jsonwebtoken')
 
@@ -62,5 +62,5 @@ userSchema.methods.generateAuthToken = async function() {
 
 
 
-const userSchemaModel = mongoose.model('user', userSchema);
-module.exports = userSchemaModel;
+const userSchemaModel = mongoose.model('user', userSchema)
+module.exports = userSchemaModel
